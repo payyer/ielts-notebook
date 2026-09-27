@@ -1,0 +1,80 @@
+// Source: teacher's Google Sheet — LIST 3 (LESSON 6-7)
+import presentPerfect from '../exercises/present-perfect.js';
+
+export default {
+  id: 'list-3',
+  order: 3,
+  title: 'List 3: Money',
+  description: 'Lessons 6–7 · Present perfect',
+
+  vocabulary: [
+    { word: 'cash', type: 'n', ipa: '/kæʃ/', meaning: 'tiền mặt', example: 'Do you have any cash on you?' },
+    { word: 'check / cheque', type: 'n', ipa: '/tʃek/', meaning: 'séc', note: 'check (US) / cheque (UK)', accept: ['check', 'cheque'], example: 'He paid for the car by cheque.' },
+    { word: 'card', type: 'n', ipa: '/kɑːd/', meaning: 'thẻ', example: 'Can I pay with my card?' },
+    { word: 'pay in cash', type: 'v phr', meaning: 'trả bằng tiền mặt', example: 'Many small shops prefer customers to pay in cash.' },
+    { word: 'pay by card', type: 'v phr', meaning: 'trả bằng thẻ', example: 'I have paid by card everywhere this week.' },
+    { word: 'salary', type: 'n', ipa: '/ˈsæləri/', meaning: 'lương (cố định hàng tháng)', example: 'Her salary has increased this year.' },
+    { word: 'wage', type: 'n', ipa: '/weɪdʒ/', meaning: 'lương theo giờ / theo ngày', example: 'The hourly wage for this part-time job is quite low.' },
+    { word: 'income', type: 'n', ipa: '/ˈɪnkʌm/', meaning: 'thu nhập', example: 'His monthly income is not enough to pay the rent.' },
+    { word: 'budget', type: 'n', ipa: '/ˈbʌdʒɪt/', meaning: 'ngân sách', example: 'I have set a budget of two million dong for this month.' },
+    { word: 'borrow', type: 'v', ipa: '/ˈbɒrəʊ/', meaning: 'mượn', example: 'Can I borrow your calculator?' },
+    { word: 'lend', type: 'v', ipa: '/lend/', meaning: 'cho mượn', note: 'lend – lent – lent', accept: ['lend - lent - lent'], example: 'I have lent him some money, but he hasn’t paid me back yet.' },
+    { word: 'discount', type: 'n', ipa: '/ˈdɪskaʊnt/', meaning: 'giảm giá', example: 'Students get a 10% discount at this cinema.' },
+    { word: 'sale', type: 'n', ipa: '/seɪl/', meaning: 'đợt giảm giá', example: 'I bought this jacket in a sale.' },
+    { word: 'voucher / coupon', type: 'n', ipa: '/ˈvaʊtʃə(r)/ · /ˈkuːpɒn/', meaning: 'phiếu giảm giá', accept: ['voucher', 'coupon'], example: 'I used a voucher to get free shipping.' },
+    { word: 'bargain', type: 'n/v', ipa: '/ˈbɑːɡən/', meaning: 'món hời / mặc cả', example: 'This bag was a real bargain. / Tourists often bargain at the market.' },
+    { word: 'make money', type: 'v phr', meaning: 'kiếm tiền', example: 'He makes money by teaching English online.' },
+    { word: 'waste money', type: 'v phr', meaning: 'tiêu tiền lãng phí', example: 'Don’t waste money on things you don’t need.' },
+    { word: 'save money', type: 'v phr', meaning: 'tiết kiệm tiền', example: 'I have saved money for a new laptop since January.' },
+    { word: 'afford to buy', type: 'v phr', ipa: '/əˈfɔːd tə baɪ/', meaning: 'đủ khả năng mua', example: 'I can’t afford to buy a new phone right now.' },
+    { word: 'broke', type: 'adj', ipa: '/brəʊk/', meaning: 'rỗng túi', example: 'I’m broke until payday.' },
+    { word: 'financial situation', type: 'n phr', ipa: '/faɪˌnænʃl ˌsɪtʃuˈeɪʃn/', meaning: 'tình hình tài chính', example: 'Her financial situation has improved since she got a new job.' },
+    { word: 'standard of living', type: 'n phr', meaning: 'mức sống', example: 'The standard of living in Vietnam has risen a lot over the last 20 years.' },
+    { word: 'cost of living', type: 'n phr', meaning: 'chi phí sinh hoạt', example: 'The cost of living in big cities is very high.' },
+    { word: 'be careful with money', type: 'v phr', meaning: 'chi tiêu cẩn thận', example: 'My mother is very careful with money.' },
+    { word: 'cut down on', type: 'phr v', meaning: 'cắt giảm (chi tiêu, số lượng…)', example: 'I’m trying to cut down on eating out.' },
+    { word: 'prioritize essential items', type: 'v phr', ipa: '/praɪˈɒrətaɪz ɪˈsenʃl ˈaɪtəmz/', meaning: 'ưu tiên các mặt hàng thiết yếu', example: 'When money is tight, you should prioritize essential items like food and rent.' },
+    { word: 'avoid unnecessary items', type: 'v phr', ipa: '/əˈvɔɪd ʌnˈnesəsəri ˈaɪtəmz/', meaning: 'tránh mua những thứ không cần thiết', example: 'Make a shopping list to avoid unnecessary items.' },
+    { word: 'money doesn’t grow on trees', type: 'idiom', meaning: 'tiền không tự nhiên mà có', example: 'Turn off the lights when you leave — money doesn’t grow on trees!' },
+    { word: 'tighten one’s belt', type: 'idiom', meaning: 'thắt chặt chi tiêu', accept: ["tighten one's belt", 'tighten your belt'], example: 'After losing his job, he had to tighten his belt and cut down on unnecessary spending.' },
+    { word: 'be on a tight budget', type: 'idiom', meaning: 'ngân sách eo hẹp', accept: ['on a tight budget'], example: 'I’m on a tight budget, so I don’t eat out very often.' },
+    { word: 'cost an arm and a leg', type: 'idiom', meaning: 'đắt cắt cổ', example: 'That smartphone costs an arm and a leg, so I can’t afford it.' },
+  ],
+
+  grammar: [
+    {
+      id: 'present-perfect',
+      title: 'Present perfect',
+      summary: 'A past action **connected to now**: no time given, still continuing, or with a result now.',
+      forms: [
+        { lines: ['(+) S + have/has + V3/ed + O', '(–) S + haven’t/hasn’t + V3/ed + O', '(?) Have/Has + S + V3/ed + O?'] },
+        { label: 'have / has', lines: ['Have → I / You / We / They', 'Has → He / She / It'] },
+      ],
+      uses: [
+        { text: 'An action that happened in the past, but the time is not mentioned', example: 'I **have seen** that movie.' },
+        { text: 'An action that started in the past and still continues now', example: 'She **has lived** here for five years.' },
+        { text: 'An action that has just happened and has a result/effect now', example: 'He **has just lost** his key.' },
+      ],
+      signalWords: [
+        'just, already',
+        'yet (usually in negatives and questions)',
+        'ever, never',
+        'recently / lately',
+        'so far / until now / up to now',
+        '**since** + a point in time: since 2020, since Monday, since I was a child',
+        '**for** + a period of time: for two years, for three months, for a long time',
+      ],
+      notes: [
+        '**for** + period (for 3 years) · **since** + starting point (since 2020).',
+        'A **finished** time (yesterday, last week, in 2019, ... ago) → use the **Past simple**, not the Present perfect.',
+        'Position: have/has **just / already / never / ever** + V3 · ... **yet** at the end of the sentence.',
+      ],
+      commonMistakes: [
+        { wrong: 'I **have bought** this phone last week.', right: 'I **bought** this phone last week.', why: '"last week" is a finished time → Past simple.' },
+        { wrong: 'She has worked here **since** five years.', right: 'She has worked here **for** five years.', why: '"five years" is a period → for.' },
+        { wrong: 'Prices **has** gone up.', right: 'Prices **have** gone up.', why: 'Plural subject → have.' },
+      ],
+      exercises: presentPerfect,
+    },
+  ],
+};
