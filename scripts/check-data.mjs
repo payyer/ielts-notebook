@@ -53,6 +53,29 @@ for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.js')).sort()) 
   console.log(`✓ ${lesson.id} — ${words.length} words — ${summary.join(' · ') || 'no grammar'}`);
 }
 
+// ---- Irregular verbs ----
+const { default: verbs, VERB_GROUPS, acceptedForms, boldOf } = await import('../src/data/verbs.js');
+const groupIds = new Set(VERB_GROUPS.map((g) => g.id));
+const bases = new Set();
+for (const v of verbs) {
+  const where = `verbs.js › ${v.base}`;
+  if (!v.base || !v.past || !v.pp || !v.meaning) errors.push(`${where}: missing base/past/pp/meaning`);
+  if (bases.has(v.base)) errors.push(`${where}: duplicate verb`);
+  bases.add(v.base);
+  if (!groupIds.has(v.group)) errors.push(`${where}: unknown group "${v.group}"`);
+  // The bold word in each example must be the right form, so the context quiz asks for it.
+  const checks = [['exPast', 'past', v.pastCtxAccept], ['exPerfect', 'pp', v.perfectCtxAccept]];
+  for (const [field, form, extra] of checks) {
+    const bold = v[field] && boldOf(v[field]);
+    if (!bold) errors.push(`${where}: ${field} needs one **bold** verb`);
+    else if (!isCorrect(bold, acceptedForms(v, form))) errors.push(`${where}: ${field} bold "${bold}" is not a ${form} form (${v[form]})`);
+    for (const e of extra ?? []) if (!isCorrect(e, acceptedForms(v, form))) errors.push(`${where}: ${field} extra answer "${e}" is not a ${form} form`);
+  }
+}
+const perGroup = VERB_GROUPS.map((g) => `${g.id} ${verbs.filter((v) => v.group === g.id).length}`);
+VERB_GROUPS.forEach((g) => { if (!verbs.some((v) => v.group === g.id)) errors.push(`verbs.js: group "${g.id}" is empty`); });
+console.log(`✓ verbs — ${verbs.length} verbs — ${perGroup.join(', ')}`);
+
 warn.forEach((w) => console.log(`⚠ ${w}`));
 errors.forEach((e) => console.log(`✗ ${e}`));
 if (errors.length) process.exit(1);

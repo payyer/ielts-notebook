@@ -2,11 +2,15 @@ import { Link } from 'react-router-dom';
 import { lessons, allWords, allTopics, questionByKey } from '../data/index.js';
 import { useStarred } from '../utils/StarredContext.jsx';
 import { useGrammarProgress } from '../utils/GrammarProgressContext.jsx';
+import { useVerbProgress } from '../utils/VerbProgressContext.jsx';
+import verbs from '../data/verbs.js';
 
 export default function Home() {
   const { starred } = useStarred();
   const { topicStats, mistakes } = useGrammarProgress();
   const due = allTopics.filter((t) => topicStats(t.key).status === 'due').length;
+  const { verbStatus } = useVerbProgress();
+  const verbsDue = verbs.filter((v) => verbStatus(v.base) === 'due').length;
   const mistakeCount = Object.keys(mistakes).filter((k) => questionByKey[k]).length;
 
   return (
@@ -24,6 +28,9 @@ export default function Home() {
         </Link>
         <Link to="/grammar?tab=mistakes" className="stat">
           <b>{mistakeCount}</b><span>grammar mistakes to fix</span>
+        </Link>
+        <Link to="/verbs?tab=practice" className="stat">
+          <b>{verbsDue}</b><span>irregular verbs to review</span>
         </Link>
         <Link to="/review" className="stat">
           <b>{starred.length}</b><span>difficult words ★</span>

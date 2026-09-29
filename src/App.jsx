@@ -3,6 +3,7 @@ import Home from './pages/Home.jsx';
 import LessonPage from './pages/LessonPage.jsx';
 import ReviewPage from './pages/ReviewPage.jsx';
 import GrammarHub from './pages/GrammarHub.jsx';
+import VerbsPage from './pages/VerbsPage.jsx';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
           <NavLink to="/" end>Lessons</NavLink>
           <NavLink to="/review">Vocabulary</NavLink>
           <NavLink to="/grammar">Grammar</NavLink>
+          <NavLink to="/verbs">Verbs</NavLink>
         </nav>
       </header>
       <main className="container">
@@ -21,6 +23,7 @@ export default function App() {
           <Route path="/lesson/:id" element={<LessonPage />} />
           <Route path="/review" element={<ReviewPage />} />
           <Route path="/grammar" element={<GrammarHub />} />
+          <Route path="/verbs" element={<VerbsPage />} />
           <Route path="*" element={<p>Page not found. <Link to="/">Back to home</Link></p>} />
         </Routes>
       </main>

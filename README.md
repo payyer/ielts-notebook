@@ -29,6 +29,11 @@ flashcards, and a quiz (choose meaning / choose word / type word / dictation).
    - *Mistake notebook* — wrong answers are saved and removed after 2 correct answers in a row.
    - *Cheat sheet* — every form on one page.
 
+**Irregular verbs** (`/verbs`) — the teacher's 76 verbs:
+- *Look up* — search by any form ("went" finds go) and listen to the three forms.
+- *Learn by pattern* — 13 groups such as A-A-A, i-a-u (drink – drank – drunk) and -en, with self-test by hiding V2/V3.
+- *Practice* — type V2 & V3, reverse (V2/V3 → V1), or fill the verb in a sentence. Spaced repetition per verb.
+
 ## Grammar questions
 
 Each grammar topic has **50 questions** in `src/data/exercises/<topic>.js`, written with that lesson's

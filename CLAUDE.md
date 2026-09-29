@@ -92,6 +92,25 @@ The user will say "cập nhật LIST N" or "cô vừa thêm bài mới". Follow 
 
    Then remind them to deploy: `git add . && git commit -m "Add list N" && git push`, after which Vercel redeploys automatically. Only commit or push yourself if the user asks.
 
+## Irregular verbs (`/verbs`)
+
+- Source: the teacher's "IRREGULAR VERB LIST.pdf" on Google Drive: https://drive.google.com/file/d/16iyUfOzvNueaoEq2RGGMui8SGczoDXuj/view
+  - Download: `curl -sL "https://drive.google.com/uc?export=download&id=16iyUfOzvNueaoEq2RGGMui8SGczoDXuj" -o verbs.pdf`
+  - Extract text: `pdftotext -enc UTF-8 -layout verbs.pdf verbs.txt`
+  - Watch out: in the extracted text of page 1, the V3 and meaning columns are shifted one row down (from "break" onwards). The PDF itself is correct.
+- Data: `src/data/verbs.js`. It has 76 verbs in the teacher's order, and `no` = her number.
+- Fields:
+  - `base`, `past`, `pp`: `"a / b"` means both forms are used.
+  - `meaning`: Vietnamese.
+  - `group`: one of the pattern groups in `VERB_GROUPS` (A-A-A, A-B-A, -ought, i-a-u, -en, -own, special, regular spelling …).
+  - optional: `note`, `say` (speech text, e.g. read → "read, red, red"), `accept.past` / `accept.pp`.
+  - `exPast` and `exPerfect`: one sentence each, with the tested form in **bold**. For the perfect sentence, bold only the V3, not have/has. Use vocabulary from the lists where natural.
+  - `pastCtxAccept` / `perfectCtxAccept`: extra accepted answers for those sentences.
+- Progress key = `base`, so never rename a verb's `base`.
+- Adding verbs: append them with the next `no`, assign a group (add a new group only if no pattern fits), then run `npm run check`. The check verifies that each bold word really is a V2 / V3 form.
+- Practice modes: type V2 + V3, reverse (V2/V3 → V1; verbs whose forms all equal the base are skipped), and in context.
+  - Spaced repetition per verb is in `src/utils/VerbProgressContext.jsx`: a wrong answer → review today; a right answer on the review day → next box (1/3/7/14/30 days).
+
 ## Validation (`npm run check`)
 
 It fails on:
@@ -101,6 +120,8 @@ It fails on:
 - an MCQ without exactly one correct option;
 - a fill question without `___`;
 - an unknown question type.
+
+It also fails on irregular-verb data errors (a duplicate `base`, an unknown or empty group, or an example whose bold word isn't the right form).
 
 It warns when a topic doesn't have 50 questions.
 

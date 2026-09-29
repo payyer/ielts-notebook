@@ -229,3 +229,21 @@ a { color: var(--primary); text-decoration: none; }
 .coverage-bar { display: flex; height: 8px; border-radius: 999px; overflow: hidden; background: var(--border); }
 .coverage-bar .right { background: var(--good); }
 .coverage-bar .wrong { background: var(--bad); }
+
+/* ---- Irregular verbs ---- */
+.nowrap { white-space: nowrap; }
+.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
+.verb-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.verb-table th { text-align: left; font-size: 0.8rem; color: var(--muted); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.verb-table td { padding: 9px 12px; border-top: 1px solid var(--border); vertical-align: top; }
+.verb-table tr:first-child td { border-top: none; }
+.verb-table .form { font-weight: 600; color: var(--primary); }
+.blurred-cell { filter: blur(6px); transition: filter .2s; cursor: pointer; }
+.blurred-cell:hover { filter: none; }
+.coverage-bar .learning { background: var(--primary); }
+.verb-inputs { display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-top: 16px; }
+.verb-inputs label { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 160px; font-size: 0.85rem; color: var(--muted); }
+.verb-inputs .input { font-size: 1.1rem; }
+@media (max-width: 600px) {
+  .verb-inputs .btn { width: 100%; }
+}

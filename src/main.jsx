@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.jsx';
 import { StarredProvider } from './utils/StarredContext.jsx';
 import { GrammarProgressProvider } from './utils/GrammarProgressContext.jsx';
+import { VerbProgressProvider } from './utils/VerbProgressContext.jsx';
 import './styles.css';
 
 // Old links used "#/lesson/..." — turn them into "/lesson/..."
@@ -16,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <StarredProvider>
         <GrammarProgressProvider>
-          <App />
+          <VerbProgressProvider>
+            <App />
+          </VerbProgressProvider>
         </GrammarProgressProvider>
       </StarredProvider>
     </BrowserRouter>
